@@ -60,3 +60,7 @@ gem "activeadmin", "~> 2.7"
 gem "devise", "~> 4.7"
 
 gem "simple_form", "~> 5.0"
+
+gem 'jwt'
+
+gem 'kaminari', '~> 1.2', '>= 1.2.1'

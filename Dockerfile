@@ -10,7 +10,6 @@ RUN gem install rails
 
 WORKDIR /app
 
-RUN rm -rf /app
 COPY . /app
 RUN bundle install
 
