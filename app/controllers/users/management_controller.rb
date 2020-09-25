@@ -1,8 +1,15 @@
 class Users::ManagementController < ApplicationController
-  before_action :only_admin, only: [:index]
+  before_action :only_admin
 
   def list
-    users = User.where(is_admin: [false, nil]).page params[:page]
+    users = User.all.page params[:page]
+    render json: users
+  end
+
+  def search
+    users = User.where('email LIKE ?', "%#{params[:email]}%") if params[:email].present?
+    users = User.where('name LIKE ?', "%#{params[:name]}%") if params[:email].nil? && params[:name].present?
+    users = [] if users.nil?
     render json: users
   end
 
@@ -20,7 +27,7 @@ class Users::ManagementController < ApplicationController
     begin
       user = check_user
       user.destroy!
-      render json: { success: true, data: user }
+      render json: user
     rescue => e
       render json: { error: e.message }
     end

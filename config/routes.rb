@@ -7,5 +7,6 @@ Rails.application.routes.draw do
     patch 'users/:id/update', to: 'users/management#update_user'
     put 'users/:id/update', to: 'users/management#update_user'
     delete 'users/:id', to: 'users/management#delete_user'
+    get 'users/search', to: 'users/management#search'
   end
 end

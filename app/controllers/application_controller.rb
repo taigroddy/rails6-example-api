@@ -11,7 +11,7 @@ class ApplicationController < ActionController::API
             @current_user_id = jwt_payload['id']
             current_user
           rescue JWT::ExpiredSignature, JWT::VerificationError, JWT::DecodeError
-            head :unauthorized
+            render json: { error: "Token is wrong!" }, status: :unauthorized
           end
         end
       else
