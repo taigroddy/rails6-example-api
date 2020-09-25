@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
+  devise_for :user
   scope :api, defaults: { format: :json } do
     devise_scope :user do
       post 'users/login', to: 'users/sessions#create'
+      post 'users/register', to: 'users/registrations#create'
     end
     get 'users/list', to: 'users/management#list'
     patch 'users/:id/update', to: 'users/management#update_user'
