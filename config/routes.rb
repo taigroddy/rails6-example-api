@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :users, skip: [:sessions, :password, :omniauth_callbacks, :unlocks, :registrations]
+  devise_for :user, skip: [:sessions, :password, :omniauth_callbacks, :unlocks, :registrations]
   scope :api, defaults: { format: :json } do
-    devise_scope :users do
+    devise_scope :user do
       post 'users/login', to: 'users/sessions#create'
       post 'users/register', to: 'users/registrations#create'
     end
