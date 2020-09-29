@@ -15,8 +15,10 @@ services:
     ports:
       - "3000:3000"
     environment:
-      - DATABASE_HOST=host.docker.internal
+      - DATABASE_HOST=db
       - DATABASE_NAME=rails6_db
+      - DATABASE_USERNAME=root
+      - DATABASE_PASSWORD=
       - RACK_ENV=development
       - RAILS_ENV=development
       - REDIS_HOST=redis
