@@ -27,7 +27,7 @@ class Users::ManagementController < ApplicationController
     begin
       user = check_user
       user.destroy!
-      render json: user
+      render json: { success: true }
     rescue => e
       render json: { error: e.message }
     end
@@ -52,6 +52,8 @@ class Users::ManagementController < ApplicationController
   def user_params
     list_permit = [:id, :name, :phone, :address]
     list_permit << :password if @current_user_id == params[:id].to_i
+    
+    params[:user] = {} if !params[:user].present?
 
     params[:user][:id] = params[:id] if params[:id].present?
     params.require(:user).permit(list_permit);
