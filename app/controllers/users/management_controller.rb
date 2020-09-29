@@ -2,22 +2,19 @@ class Users::ManagementController < ApplicationController
   before_action :only_admin
 
   def list
-    users = User.all.page params[:page]
-    render json: users
+    @users = User.all.page params[:page]
   end
 
   def search
-    users = User.where('email LIKE ?', "%#{params[:email]}%") if params[:email].present?
-    users = User.where('name LIKE ?', "%#{params[:name]}%") if params[:email].nil? && params[:name].present?
-    users = [] if users.nil?
-    render json: users
+    @users = User.where('email LIKE ?', "%#{params[:email]}%") if params[:email].present?
+    @users = User.where('name LIKE ?', "%#{params[:name]}%") if params[:email].nil? && params[:name].present?
+    @users = [] if @users.nil?
   end
 
   def update_user
     begin
-      user = check_user
-      user.update!(user_params)
-      render json: { success: true, data: user}
+      @user = check_user
+      @user.update!(user_params)
     rescue Exception => e
       render json: { error: e.message }
     end
@@ -25,9 +22,8 @@ class Users::ManagementController < ApplicationController
 
   def delete_user
     begin
-      user = check_user
-      user.destroy!
-      render json: { success: true }
+      @user = check_user
+      @user.destroy!
     rescue => e
       render json: { error: e.message }
     end
