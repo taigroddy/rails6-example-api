@@ -64,3 +64,10 @@ gem "simple_form", "~> 5.0"
 gem 'jwt'
 
 gem 'kaminari', '~> 1.2', '>= 1.2.1'
+
+group :development, :test do
+  gem 'rspec-rails', '~> 3.6'
+  gem 'faker'
+  gem 'factory_bot_rails'
+  gem 'database_cleaner'
+end

@@ -11,9 +11,17 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    super do |user|
+      begin
+        @curren_user = user.save!
+        render json: { success: true, data: user }
+      rescue => exception
+        render json: { error: exception.message }
+      end
+      return
+    end
+  end
 
   # GET /resource/edit
   # def edit
