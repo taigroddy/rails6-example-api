@@ -13,4 +13,6 @@ WORKDIR /app
 COPY . /app
 RUN bundle install
 
+RUN yarn install --check-files
+
 EXPOSE 3000
