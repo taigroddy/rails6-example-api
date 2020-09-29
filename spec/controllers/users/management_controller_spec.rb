@@ -8,7 +8,8 @@ RSpec.describe Users::ManagementController, type: :controller do
     before do 
       get '/api/users/list',
       headers: {
-        Authorization: "Bearer #{admin.generate_jwt}"
+        Authorization: "Bearer #{admin.generate_jwt}",
+        'Content-Type': 'application/json'
       }
     end
     it 'returns list' do
@@ -27,7 +28,8 @@ RSpec.describe Users::ManagementController, type: :controller do
     before do 
       get '/api/users/search?email=chauductai_search',
       headers: {
-        Authorization: "Bearer #{admin.generate_jwt}"
+        Authorization: "Bearer #{admin.generate_jwt}",
+        'Content-Type': 'application/json'
       }
     end
     it 'returns result' do
@@ -45,7 +47,8 @@ RSpec.describe Users::ManagementController, type: :controller do
     before do 
       patch "/api/users/#{user_update.id}/update",
       headers: {
-        Authorization: "Bearer #{admin.generate_jwt}"
+        Authorization: "Bearer #{admin.generate_jwt}",
+        'Content-Type': 'application/json'
       },
       params: {
         user: {
@@ -69,7 +72,8 @@ RSpec.describe Users::ManagementController, type: :controller do
     before do 
       delete "/api/users/#{user_detele.id}",
       headers: {
-        Authorization: "Bearer #{admin.generate_jwt}"
+        Authorization: "Bearer #{admin.generate_jwt}",
+        'Content-Type': 'application/json'
       }
     end
     it 'return data user is deleted' do

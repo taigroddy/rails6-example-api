@@ -7,6 +7,9 @@ RSpec.describe Users::SessionsController, type: :controller do
 
     before do 
       post '/api/users/login',
+      headers: {
+        'Content-Type': 'application/json'
+      },
       params: {
         email: "chauductai1996@gmail.com",
         password: "123123"

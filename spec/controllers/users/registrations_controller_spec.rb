@@ -5,6 +5,9 @@ RSpec.describe Users::RegistrationsController, type: :controller do
 
     before do 
       post '/api/users/register',
+      headers: {
+        'Content-Type': 'application/json'
+      },
       params: {
         user: {
           email: 'chauductai1996@gmail.com', 
