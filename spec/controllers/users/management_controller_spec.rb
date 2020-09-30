@@ -12,7 +12,7 @@ RSpec.describe Users::ManagementController, type: :controller do
       }
     end
     it 'returns list' do
-      expect(JSON.parse(response.body).size()).to eq(5)
+      expect(JSON.parse(response.body)['data'].size()).to eq(5)
     end
     it 'returns status code 200' do
       expect(response).to have_http_status(:success)
@@ -31,7 +31,7 @@ RSpec.describe Users::ManagementController, type: :controller do
       }
     end
     it 'returns result' do
-      expect(JSON.parse(response.body)[0]["id"]).to eq(user_search.id)
+      expect(JSON.parse(response.body)['data'][0]["id"]).to eq(user_search.id)
     end
     it 'returns status code 200' do
       expect(response).to have_http_status(:success)
