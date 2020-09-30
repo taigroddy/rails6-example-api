@@ -1,4 +1,4 @@
 json.success true
-json.data do |user|
-    json.partial! 'users/user', user: user
+json.data do |json|
+    json.partial! 'users/user_not_token', user: @user
 end
