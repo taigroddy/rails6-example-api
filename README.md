@@ -17,3 +17,6 @@ Step 4: In docker container environment, run command `rake db:migrate`. <br>
 - Step 2: Run `bundle install`. <br>
 - Step 3: Run command `rake db:migrate`. <br>
 
+# POSTMAN COLLECTION
+<p><b>Docs:</b> https://documenter.getpostman.com/view/6229909/TVRd8W8v#e15deeff-0c66-4743-b20d-4ffccfaded3d</p>
+<p><b>Collection:</b> https://www.getpostman.com/collections/f08685669d1e6d6fa392</p>
